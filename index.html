@@ -176,13 +176,13 @@
                 <button  value="7">7</button>
                 <button  value="8">8</button>
                 <button  value="9">9</button>
-                <button  value="10">10</button>
+                <button  value="0">0</button>
                 <button class="bleft" value="(">(</button>
                 <button class="bright" value=")">)</button>
                 <button class="addition" value="+">+</button>
                 <button class="subs" value="-">-</button>
                 <button class="multi" value="*">*</button>
-                <button class="div" value="/">/</button>
+                <button class="div" value="/">÷</button>
                 <button class="point" value=".">.</button>
                 <button class="equal">=</button>
             </div>
@@ -192,6 +192,7 @@
 </body>
 
 <script>
+
     const dis = document.querySelector(".display");
     const btn = document.querySelector(".btn")
 
@@ -210,19 +211,33 @@
      })
 
      document.querySelector(".equal").addEventListener("click",()=>{
-        //*evaluate the number input in display
-        let result = eval(dis.innerHTML)
+       
         
-        //*display result 
-        dis.innerHTML = result
+       //*Tested for posibble errors
+       try{
+         //*evaluate the number input in display
+         let result = eval(dis.innerHTML)
+
+          //*display result 
+         dis.innerHTML = result
+
+         //*No display
+        if(dis.innerHTML === "undefined") dis.innerHTML = ""
+
+        //*Any Error Produce will pass to err
+       }catch(err){
+        alert("Error")
+       }
+
+        
      })
 
 
      document.querySelector(".del").addEventListener("click",()=>{
            dis.innerHTML = ""
     })
-     
 
+    
      
 </script>
 </html>
