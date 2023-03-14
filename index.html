@@ -4,157 +4,14 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- CSS ONLY -->
+    <link rel="stylesheet" href="style.css">
+
+    <!-- JS ONLY -->
+    <script defer src="script.js"></script>
     <title>Calculator - Johnrave</title>
 </head>
 
-<style>
-
-    /* stamp */
-.rubber {
-    box-shadow: 0 0 0 3px rgb(158, 158, 158), 0 0 0 2px rgb(40, 40, 41) inset;  
-    border: 2px solid transparent;
-    border-radius: 4px;
-    display: inline-block;
-    padding: 5px 2px;
-    line-height: 22px;
-    color: #fff;
-    font-size: 24px; 
-    text-transform: uppercase;
-    text-align: center;
-    opacity: 0.4;
-    width: 155px;
-    transform: rotate(-20deg);
-    position: absolute;
-    top: 10%;
-    left: 5%;
-    
-  }
-
-    *{
-        padding: 0;
-        margin: 0;
-        box-sizing: border-box;
-    }
-
-    section{
-        height: 100vh;
-        width: 100vw;
-        background-color: #222;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        backdrop-filter: blue(10px);
-    }
-
-    .container{
-        width: 30%;
-        padding: 5px;
-        height: 70%;
-        background-color: #333333;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-    }
-
-    h1{
-        color: #fff;
-        font-size: 40px;
-        text-transform: uppercase;
-        font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-    }
-
-
-    .display-container{
-        height: 15%;
-        width: 68%;
-        
-        background-color: rgb(65, 64, 64);
-        display: flex;
-        align-items: center;
-        justify-content: flex-end;
-        font-size: 30px;
-        margin: 20px;
-        padding: 20px;
-        color: white;
-    }
-
-    .btn{
-        display: grid;
-        grid-template-columns: repeat(4, 80px);
-        width: 0%;
-        align-items: center;
-    }
-
-    .btn > button{
-        font-size: 20px;
-        margin: 2px;
-        padding: 10px;
-        background-color: #4CAF50;
-        cursor: pointer;
-        border: none;
-        color: #fff;
-    }
-
-    .back{
-        grid-row: 1;
-        grid-column: 4;
-    }
-    
-
-    .addition{
-        grid-column: 4;
-        grid-row: 4/6;
-        height: 100%;
-    }
-    
-    .subs{
-        grid-column: 4;
-        grid-row: 3;
-    }
-
-    .multi{
-        grid-column: 4;
-        grid-row: 2;
-    }
-
-    .div{
-        grid-column: 4;
-        grid-row: 1;
-    }
-
-    .bright{
-        grid-column: 3;
-        grid-row: 1;
-    }
-
-    .bleft{
-        grid-column: 2;
-        grid-row: 1;
-    }
-
-    @media screen and (max-width:480px) {
-        .container{
-            height: 100%;
-            width: 100%;
-            padding: 20px;
-        }
-
-        .display-container{
-            height: 10%;
-            width: 100%;
-        }
-
-        
-    .rubber{
-        top: 4%;
-        left: 7%;
-        transform: rotate(-5deg);
-        color: #fff;
-     }
-    }
-</style>
 <body>
 
       <!-- Stamp -->
@@ -185,7 +42,7 @@
                 <button class="bright" value=")">)</button>
                 <button class="addition" value="+">+</button>
                 <button class="subs" value="-">-</button>
-                <button class="multi" value="*">*</button>
+                <button class="multi" value="*">x</button>
                 <button class="div" value="/">÷</button>
                 <button class="point" value=".">.</button>
                 <button class="equal">=</button>
@@ -196,56 +53,4 @@
     </section>
 </body>
 
-<script>
-
-    const dis = document.querySelector(".display");
-    const btn = document.querySelector(".btn")
-
-     btn.addEventListener('click',(e)=>{
-         
-        //*Display a value of click btn
-        let btnClick = e.target.value
-        
-        //*Pass the value of any button that clicked
-        dis.append(btnClick)
-        
-     })
-
-     document.querySelector(".equal").addEventListener("click",()=>{ 
-       //*Tested for posibble errors
-       try{
-         //*evaluate the number input in display
-         let result = eval(dis.innerHTML)
-
-          //*display result 
-         dis.innerHTML = result
-
-         //*No display
-        if(dis.innerHTML === "undefined") dis.innerHTML = ""
-
-        //*Any Error Produce will pass to err
-       }catch(err){
-        alert("Error")
-       } 
-     })
-
-     document.querySelector(".back").addEventListener("click", ()=>{
-        //*store the value of display to a variable
-       let str = dis.innerHTML
-
-       //*display updated value na nabawasan na.
-       dis.innerHTML = str.substring(0,str.length - 1)
-
-    })
-
-    //* Delete all display
-     document.querySelector(".del").addEventListener("click",()=>{
-           dis.innerHTML = ""
-    })
-
-
-    
-    
-     
-</script>
 </html>
